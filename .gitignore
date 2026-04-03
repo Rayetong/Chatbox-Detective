@@ -2,10 +2,10 @@
 node_modules/
 
 #日志
-日志.txt
+log.txt
 
 #文档
-技术文档.docx
+tech.docx
 
 
 # 环境变量文件（包含敏感信息）
