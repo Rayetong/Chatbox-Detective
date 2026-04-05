@@ -1,0 +1,24 @@
+@tailwind base; /*重置浏览器默认样式，如margin\padding*/
+@tailwind components; /*Tailwind组件类，如container*/
+@tailwind utilities; /*Tailwind工具类，如bg-red-500*/
+
+/*这三行 @tailwind 指令告诉 Tailwind："请在这里生成对应的 CSS 代码"*/
+
+/* 琥珀色主题滚动条 - 更精致 */
+.custom-scrollbar::-webkit-scrollbar {
+    height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #67f7c7;  /* 深琥珀色轨道 */
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #fd9c00, #f5700b);  /* 渐变滑块 */
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #f8a81f, #f9c133);
+}
