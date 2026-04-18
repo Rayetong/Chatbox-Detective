@@ -14,7 +14,7 @@ export default function AddFriend({ onOpenChat }) {
         setSearchResult(null)
         setAdded(false)
 
-        if (!searchId.trim()) {
+        if (!searchInput.trim()) {
         setError('请输入 code 或 昵称')
         return
         }
