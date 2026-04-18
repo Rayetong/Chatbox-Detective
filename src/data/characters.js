@@ -21,7 +21,21 @@ export function addCharacterByCode(code){
     }
     return false
 }
-//检查是否为haoyou 
+//通过nickname搜索
+export function getCharacterByNickname(nickname)
+{
+    return characters.find(char=>char.nickname===nickname)
+}
+//通过nickname添加
+export function addCharacterByNickname(nickname){
+    const character=characters.find(char=>char.nickname===nickname)
+    if(character && ! character.isAdd){
+        character.isAdd=true
+        return true
+    }
+    return false
+}
+//检查是否为好友
 export function isFriend(id)
 {
     const character=getCharacterById(id)
@@ -35,7 +49,7 @@ export const characters=[
         name:'贾警官',
         nickname:'贾警官',
         code:'jia110',
-        avatar:'./public/peopleImages/jiaAvatar.png',
+        avatar:'peopleImages/jiaAvatar.png',
         portrait:'./public/peopleImages/jiaPortrait.png',
         age:25,
         gender:'女',
@@ -49,8 +63,8 @@ export const characters=[
         name:'测试1',
         nickname:'测试1',
         code:'ceshi1',
-        avatar:'./public/peopleImages/jiaAvatar.png',
-        portrait:'./public/peopleImages/jiaAvatar.png',
+        avatar:'peopleImages/jiaAvatar.png',
+        portrait:'peopleImages/jiaAvatar.png',
         age:0,
         gender:'男',
         signature:'测试一账号',
@@ -63,8 +77,8 @@ export const characters=[
         name:'测试2',
         nickname:'测试2',
         code:'ceshi2',
-        avatar:'./public/peopleImages/jiaAvatar.png',
-        portrait:'./public/peopleImages/jiaAvatar.png',
+        avatar:'peopleImages/jiaAvatar.png',
+        portrait:'peopleImages/jiaAvatar.png',
         age:0,
         gender:'女',
         signature:'测试二账号',

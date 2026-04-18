@@ -1,69 +1,30 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import Phone from './components/Phone/Phone'
+
 //App组件：整个游戏的根组件
 function App(){
     const items = ['证据卡片', '人物卡片','测试一','测试二','测试二','测试二','测试二','测试二','测试二','测试二','测试二','测试二','测试二','测试二','测试二','测试二','测试二','测试二','测试二','测试二','测试二','测试二']
     //状态栏数据
-    const [currentTime,setCurrentTime]=useState('12:00')
-    const [batteryLevel,setBatteryLevel]=useState(80)
-    const [isCharging,setIsCharging]=useState(false)
+    // 当前选中的联系人ID（null表示在联系人列表页）
+    const [currentChatId, setCurrentChatId] = useState(null)
+    
+    // 测试：初始已解锁贾警官
+    const [unlockedContacts] = useState([
+        { id: 'jia', name: '贾警官', avatar: '/peopleImages/jiaAvatar.png' }
+    ])
 
-    //获取当前时间
-    useEffect(()=>{
-        const updateTime=()=>{
-            const now=new Date();
-            const hours=now.getHours().toString().padStart(2,'0');
-            const minutes=now.getMinutes().toString().padStart(2,'0');
-            setCurrentTime(`${hours}:${minutes}`)
-        }
-        updateTime()
-        const interval=setInterval(updateTime,1000)
-        return ()=>clearInterval(interval)
-    },[])
-
-    // //获取电池
-    useEffect(()=>{
-        if('getBattery' in navigator){
-            navigator.getBattery().then(battery=>{
-                //更新电池信息
-                const updateBatterInfo=()=>{
-                    setBatteryLevel(Math.round(battery.level*100))
-                    setIsCharging(battery.charging)
-                }
-                updateBatterInfo()
-                //监听电池状态变化
-                battery.addEventListener('levelchange',updateBatterInfo)
-                battery.addEventListener('chargingchange',updateBatterInfo)
-                return()=>{
-                    battery.removeEventListener('levelchange',updateBatterInfo)
-                    battery.removeEventListener('chargingchange',updateBatterInfo)
-                }
-            })
-        }
-    },[])
-
-    // 获取电池图标
-    const getBatteryIcon = () => {
-        let ans=''
-        
-        if (batteryLevel === null) {
-            ans+='🔋'  // 未知
-        }
-        if (batteryLevel >= 80) {
-            ans+='🔋'
-        } else if (batteryLevel >= 50) {
-            ans+='🔋'
-        } else if (batteryLevel >= 20) {
-            ans+='🔋'
-        } else {
-            ans+='⚠️'  // 低电量警告
-        }
-        if (isCharging) {
-            ans+=' 充电中😋'  // 充电中
-        }
-        return ans
+    // 处理选择联系人
+    const handleSelectContact = (contactId) => {
+        setCurrentChatId(contactId)
     }
 
+    // 处理返回联系人列表
+    const handleBackToList = () => {
+        setCurrentChatId(null)
+    }
+
+    
     return(
         /*最外层容器：占满整个屏幕，使用flex布局*/
         <div className="flex h-screen overflow-hidden bg-teal-300">
@@ -71,7 +32,7 @@ function App(){
             {/* flex-1: 占据剩余空间（右侧固定宽度时，左侧自动填满） */}
             <div className="flex-1  p-4 flex flex-col min-w-0">
                 {/* 黑板内部的内容容器 */}
-                <div className="bg-amber-100/90 rounded-lg shadow-2xl h-full p-4 bg-[url('./public/others/background.png')] bg-cover bg-center">
+                <div className="bg-amber-100/90 rounded-lg shadow-2xl h-full p-4 bg-[url('others/background.png')] bg-cover bg-center">
                     {/* 这里将来放 ReactFlow 画布 */}
                     <div className="text-stone-600 text-center mt-20">
                         人物卡片+证据卡片位置
@@ -90,38 +51,7 @@ function App(){
             </div>
             
             {/* ========== 右侧：手机区域 ========== */}
-            <div className="md:w-1/3  flex flex-col rounded-2xl bg-black/70 shadow-2xl p-4">
-                <div className=" m-3 rounded-2xl shadow-xl flex-1 flex flex-col overflow-hidden">
-                    {/* 手机外壳效果：圆角 + 阴影 + 内边距 */}
-                    {/* 手机状态栏（仿真的小细节） */}
-                    <div className="bg-black px-4 flex py-2 text-center text-sm text-white justify-between items-center">
-                        {/* 左边时间显示 */}
-                        <div className="text-white font-medium">
-                            {currentTime}
-                        </div>
-                        {/* 右边电池状态 */}
-                        <div className="flex items-center gap-2 text-white">
-                            <span className="text-xs">
-                                {getBatteryIcon()} {batteryLevel}%
-                            </span>
-                        </div>
-                    </div>
-                    {/* 手机主内容区 */}
-                    <div className="flex-1 p-3 overflow-y-auto  bg-[url('./public/others/phoneBackground.png')] bg-cover bg-center">
-                        手机界面
-                        <div className="text-sm mt-2">联系人列表/聊天记录</div>
-                    </div>
-                
-                {/* 返回按键 */}
-                    <div className="bg-black p-3 border-t border-white">
-                        <button className="w-full hover:opacity-80 transition-opacity"
-                        onClick={()=>console.log('返回')}>
-                            <img src="/public/others/return_button.png" alt="返回" className="w-20 h-auto mx-auto"/>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
+            <Phone />
         </div>
     )
 

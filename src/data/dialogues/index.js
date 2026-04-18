@@ -13,8 +13,8 @@ export function getDialogueStart(id){
 }
 
 export function getDialogueNode(id,nodeId){
-    const chatacterDialogue=dialogues[id]
-    if(!chatacterDialogue) return null
+    const characterDialogue=dialogues[id]
+    if(!characterDialogue) return null
     return characterDialogue[nodeId]
 }
 

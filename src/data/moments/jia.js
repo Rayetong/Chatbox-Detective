@@ -2,6 +2,7 @@
 export const jiaMoments=[
     {
         id:'1',
+        publishTime: '2026-04-05T09:00:00',
         content:'近期有多起电信诈骗案件发生。请各位注意辨别虚假信息，不要轻易转账！',
         images:[
             './public/momentImages/jia/zhapian.png'
@@ -9,20 +10,20 @@ export const jiaMoments=[
         likes:['ceshi1','ceshi2'],
         comments:[
             {
-                id:'jia',
+                userId:'jia',
                 content:[
                     {type:'text',value:'另外也要警惕境外电话。'},
                     {type:'text',value:'骗子会冒充你熟悉的人，假装遇到了急事，要求转账！'},
                 ]
             },
             {
-                id:'ceshi1',
+                userId:'ceshi1',
                 content:[
                     {type:'text',value:'谢谢警官提醒！'},
                 ]
             },
             {
-                id:'ceshi2',
+                userId:'ceshi2',
                 content:[
                     {type:'text',value:'我也转发一下，提醒身边的朋友！'},
                     {type:'image',value:'./public/momentImages/jia/zhapian.png'},
