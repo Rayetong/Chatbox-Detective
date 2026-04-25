@@ -83,7 +83,7 @@ export default function Phone() {
       <button
         className={`flex flex-col items-center py-1 px-4 rounded-lg transition-colors ${
           activeTab === TABS.CHAT && !isInChat 
-            ? 'text-blue-500' 
+            ? 'text-white bg-teal-400' 
             : 'text-gray-500'
         }`}
         onClick={() => handleTabChange(TABS.CHAT)}
@@ -97,7 +97,7 @@ export default function Phone() {
       <button
         className={`flex flex-col items-center py-1 px-4 rounded-lg transition-colors ${
           activeTab === TABS.CONTACT && !isInChat 
-            ? 'text-blue-500' 
+            ? 'text-white bg-teal-400' 
             : 'text-gray-500'
         }`}
         onClick={() => handleTabChange(TABS.CONTACT)}
@@ -111,7 +111,7 @@ export default function Phone() {
       <button
         className={`flex flex-col items-center py-1 px-4 rounded-lg transition-colors ${
           activeTab === TABS.MOMENTS && !isInChat 
-            ? 'text-blue-500' 
+            ? 'text-white bg-teal-400' 
             : 'text-gray-500'
         }`}
         onClick={() => handleTabChange(TABS.MOMENTS)}
@@ -125,7 +125,7 @@ export default function Phone() {
       <button
         className={`flex flex-col items-center py-1 px-4 rounded-lg transition-colors ${
           activeTab === TABS.ADD && !isInChat 
-            ? 'text-blue-500' 
+            ? 'text-white bg-teal-400' 
             : 'text-gray-500'
         }`}
         onClick={() => handleTabChange(TABS.ADD)}
@@ -150,7 +150,7 @@ export default function Phone() {
         </div>
         
         {/* Tab 栏 */}
-        <TabBar />
+        {!isInChat && <TabBar />}
         
         {/* 底部返回按钮（物理返回键风格） */}
         <div className="bg-black p-3 border-t border-white">

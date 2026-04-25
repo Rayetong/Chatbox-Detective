@@ -32,8 +32,18 @@ export default function ChatView({ contactId, onBack }) {
     if (!node) return
     
     // 1. 显示对方的消息
-    addMessage(contactId, node.content, false)
-    
+    for(let i=0;i<node.content.length;i++)
+    {
+
+      const contentItem=node.content[i];
+      setIsTyping(true)
+      await new Promise(resolve=>setTimeout(resolve,800))
+      setIsTyping(false)
+      addMessage(contactId,[contentItem],false);
+      
+      
+    }
+    setIsTyping(false);
     // 2. 保存选项供玩家选择
     setCurrentOptions(node.options || [])
     setCurrentNodeId(nodeId)

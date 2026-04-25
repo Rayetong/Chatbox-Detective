@@ -1,33 +1,33 @@
-//贾的朋友圈
-export const jiaMoments=[
+//测试2的朋友圈
+export const ceshi2Moments=[
     {
         id:'1',
-        authorId:'jia',
-        publishTime: '2026-04-05T09:00:00',
-        keyword:'电信诈骗',
-        content:'近期有多起电信诈骗案件发生。请各位注意辨别虚假信息，不要轻易转账！',
+        authorId:'ceshi2',
+        publishTime: '2026-04-06T09:00:00',
+        keyword:'测试2',
+        content:'用于测试',
         images:[
             './public/momentImages/jia/zhapian.png'
         ],
-        likes:['ceshi1','ceshi2'],
+        likes:['ceshi1','ceshi2','jia'],
         comments:[
             {
                 userId:'jia',
                 content:[
-                    {type:'text',value:'另外也要警惕境外电话。'},
-                    {type:'text',value:'骗子会冒充你熟悉的人，假装遇到了急事，要求转账！'},
+                    {type:'text',value:'111'},
+                    {type:'text',value:'222'},
                 ]
             },
             {
                 userId:'ceshi1',
                 content:[
-                    {type:'text',value:'谢谢警官提醒！'},
+                    {type:'text',value:'333'},
                 ]
             },
             {
-                userId:'ceshi2',
+                userId:'ceshi1',
                 content:[
-                    {type:'text',value:'我也转发一下，提醒身边的朋友！'},
+                    {type:'text',value:'444'},
                     {type:'image',value:'./public/momentImages/jia/zhapian.png'},
                 ]
             },

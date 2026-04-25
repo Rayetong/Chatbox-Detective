@@ -35,7 +35,7 @@ export default function ChatList({ onOpenChat }) {
           contacts.map(contact => (
             <div 
               key={contact.id}
-              className="flex items-center gap-3 p-3 border-b hover:bg-gray-50 cursor-pointer"
+              className="flex items-center gap-3 p-3 border-b hover:bg-teal-100 cursor-pointer"
               onClick={() => onOpenChat(contact.id)}
             >
               {/* 头像 */}
